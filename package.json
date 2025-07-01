@@ -1,0 +1,28 @@
+{
+  "name": "puskesmas",
+  "version": "1.0.0",
+  "description": "## What is CodeIgniter?",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}",
+    "tailwind" : "npx tailwindcss -i ./resources/input.css -o ./public/css/main.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.6",
+    "@tailwindcss/postcss": "^4.1.6",
+    "autoprefixer": "^10.4.21",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^11.0.1"
+  }
+}
