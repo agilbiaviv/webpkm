@@ -124,3 +124,28 @@ nb-configuration.xml
 
 /results/
 /phpunit*.xml
+
+
+# Environment
+.env
+
+# CodeIgniter Writable
+/writable/cache/*
+/writable/logs/*
+/writable/session/*
+/writable/debugbar/*
+/writable/uploads/*
+!/writable/index.html
+
+# Composer dependencies
+/vendor/
+
+# Node modules and build outputs
+/node_modules/
+/public/css/main.css
+
+# OS & IDE junk
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
