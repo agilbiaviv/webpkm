@@ -3,18 +3,18 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
-use App\Models\UserModel;
 
 class UserSeeder extends Seeder
 {
     public function run()
     {
-        $userModel = new UserModel();
-
-        $userModel->insert([
+        $data = [
             'username' => 'admin',
-            'email' => 'puskesmasujicoba@gmail.com',
-            'password' => password_hash('pkm_ujicoba', PASSWORD_DEFAULT)
-        ]);
+            'password' => password_hash('admin123', PASSWORD_DEFAULT),
+            'email' => 'admin@puskesmas.local',
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+
+        $this->db->table('pengguna')->insert($data);
     }
 }
