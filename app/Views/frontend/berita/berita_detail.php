@@ -6,7 +6,7 @@
 
 <?= $this->section('content') ?>
 
-<div class="max-w-3xl mx-auto py-10 px-4">
+<div class="max-w-3xl mx-auto py-10 px-6">
     <h1 class="text-3xl font-bold mb-4"><?= esc($berita['judul_berita']) ?></h1>
     <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 flex items-center gap-3 flex-wrap">
         <span>Diposting pada <?= dateFormat($berita['tanggal_berita']) ?> |</span>
@@ -29,26 +29,28 @@
     <div class="prose max-w-none">
         <?= $berita['deskripsi'] ?>
     </div>
+
+    <?php if (!empty($recommended)): ?>
+        <div class="max-w-3xl mx-auto mt-10">
+            <h2 class="text-xl font-semibold mb-4">Berita Terkait</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <?php foreach ($recommended as $item): ?>
+                    <a href="<?= base_url('berita/' . $item['slug']) ?>" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow hover:shadow-md transition text-orange-500 dark:text-orange-400 hover:text-orange-600">
+                        <?php if (!empty($item['foto'])): ?>
+                            <img src="<?= base_url('uploads/berita/' . $item['foto']) ?>" alt="<?= esc($item['judul_berita']) ?>" class="w-full h-40 object-cover">
+                        <?php endif; ?>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold mb-2"><?= esc($item['judul_berita']) ?></h3>
+                            <p class="text-sm text-gray-500"><?= date('d M Y', strtotime($item['created_at'])) ?></p>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>
 
-<?php if (!empty($recommended)): ?>
-    <div class="max-w-3xl mx-auto mt-10 px-4">
-        <h2 class="text-xl font-semibold mb-4">Berita Terkait</h2>
-        <div class="grid md:grid-cols-2 gap-4">
-            <?php foreach ($recommended as $item): ?>
-                <a href="<?= base_url('berita/' . $item['slug']) ?>" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow hover:shadow-md transition text-orange-500 dark:text-orange-400 hover:text-orange-600">
-                    <?php if (!empty($item['foto'])): ?>
-                        <img src="<?= base_url('uploads/berita/' . $item['foto']) ?>" alt="<?= esc($item['judul_berita']) ?>" class="w-full h-40 object-cover">
-                    <?php endif; ?>
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold mb-2"><?= esc($item['judul_berita']) ?></h3>
-                        <p class="text-sm text-gray-500"><?= date('d M Y', strtotime($item['created_at'])) ?></p>
-                    </div>
-                </a>
-            <?php endforeach; ?>
-        </div>
-    </div>
-<?php endif; ?>
+
 
 
 <?= $this->endSection() ?>

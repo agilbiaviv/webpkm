@@ -6,10 +6,10 @@
 
 
 <?= $this->section('content'); ?>
-<section class="py-16 bg-white dark:bg-gray-900">
+<section class="py-10">
     <div class="max-w-4xl mx-auto px-4">
         <!-- Card Dua Kolom -->
-        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-stretch">
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-stretch " data-aos="fade-up">
 
             <!-- Kolom Kiri: Foto Kepala Puskesmas -->
             <?php if (!empty($sambutan['foto_kepala'])): ?>

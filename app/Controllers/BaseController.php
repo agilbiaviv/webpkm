@@ -9,6 +9,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\Controllers\MenuController;
+
 /**
  * Class BaseController
  *
@@ -50,6 +51,12 @@ abstract class BaseController extends Controller
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
+
+
+        if (env('app.maintenanceMode') === 'true' || env('app.maintenanceMode') === true) {
+            echo view('frontend/maintenance');
+            exit;
+        }
 
         // Preload any models, libraries, etc, here.
 

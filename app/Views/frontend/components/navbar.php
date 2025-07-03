@@ -1,4 +1,4 @@
-<nav id="navbar" class="fixed top-0 left-0 w-full backdrop-blur-sm shadow z-50 transition-transform duration-300 bg-white/90 text-gray-900 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 ease-in-out will-change-transform">
+<nav id="navbar" class="fixed top-0 left-0 w-full backdrop-blur-sm shadow z-50 dark:shadow-[0_2px_4px_rgba(255,255,255,0.06)] transition-transform duration-300 bg-white/90 text-gray-900 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 ease-in-out will-change-transform">
     <div class="max-w-screen-xl mx-auto px-4 py-4 flex justify-between items-center">
         <a href="<?= base_url(); ?>" class="text-xl font-bold text-gray-900 dark:text-white">
             PKM Bungatan
@@ -29,8 +29,8 @@
 
             <a href="<?= base_url('inovasi'); ?>" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400">Inovasi</a>
             <a href="<?= base_url('berita'); ?>" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400">Berita</a>
-            <a href="<?= base_url('pengaduan'); ?>" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400">Pengaduan</a>
             <a href="<?= base_url('layanan'); ?>" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400">Layanan</a>
+            <a href="#pengaduan" class="text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400">Pengaduan</a>
         </div>
 
         <div class="flex items-center">

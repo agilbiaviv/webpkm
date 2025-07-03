@@ -1,5 +1,5 @@
 <!-- views/frontend/components/footer.php -->
-<footer class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 py-8 mt-12 border-t dark:border-gray-700">
+<footer class="bg-gray-100 backdrop-blur-sm dark:bg-gray-900 text-gray-700 dark:text-gray-300 py-8 border-t border-gray-200 dark:border-gray-700 shadow-[-2px_-2px_2px_rgba(0,0,0,0.08)] dark:shadow-[-2px_-2px_2px_rgba(255,255,255,0.06)]">
     <div class="max-w-screen-xl mx-auto px-4 grid md:grid-cols-3 gap-6 text-sm">
 
         <div>

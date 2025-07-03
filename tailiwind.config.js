@@ -6,8 +6,14 @@ module.exports = {
     './resources/**/*.{js,php,html}',
     './public/**/*.html',
   ],
+  corePlugins: {
+    preflight: false,
+  },
   theme: {
     extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
@@ -25,6 +31,16 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    'bg-gradient-radial',
+    'from-orange-300',
+    'via-orange-50',
+    'to-orange-300',
+    'bg-cover',
+    'bg-no-repeat',
+  ],
   darkMode: "class",
-  plugins: [],
-};
+  plugins: [
+    require('@tailwindcss/line-clamp')
+  ],
+ };

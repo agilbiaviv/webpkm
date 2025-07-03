@@ -20,6 +20,10 @@
 # APP
 #--------------------------------------------------------------------
 
+# ubah menjadi true saat website sedang maintenance, dan false saat maintenance sudah selesai 
+
+# app.maintenanceMode = true
+
 # app.baseURL = ''
 # If you have trouble with `.`, you could also use `_`.
 # app_baseURL = ''

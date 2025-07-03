@@ -85,8 +85,12 @@ $routes->group('/', ['namespace' => 'App\Controllers\Frontend'], function ($rout
     $routes->get('profil/sambutan', 'Profil\SambutanController::index');
 
     $routes->get('layanan', 'Layanan::index');
+    $routes->get('inovasi', 'Inovasi::index');
     $routes->get('profil', 'Profil::index');
     $routes->get('galeri', 'Galeri::index');
+
+    // ==== untuk auto-refresh setelah maintenance selesai ====
+    $routes->get('maintenance-status', 'MaintenanceStatusController::index');
 });
 
 

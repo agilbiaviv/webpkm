@@ -41,7 +41,7 @@ class Berita extends BaseController
             $grouped[$groupKey][] = $item;
         }
 
-        return view('frontend/berita', [
+        return view('frontend/berita/berita', [
             'beritaGrouped' => $grouped,
             'pager' => $pager,
             'keyword' => $keyword,
@@ -71,7 +71,7 @@ class Berita extends BaseController
             ->limit(4)
             ->find();
 
-        return view('frontend/berita_detail', [
+        return view('frontend/berita/berita_detail', [
             'title' => $berita['judul_berita'],
             'berita' => $berita,
             'recommended' => $recommended

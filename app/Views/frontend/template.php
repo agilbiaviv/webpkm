@@ -19,7 +19,7 @@
     <?= $this->include('frontend/components/navbar'); ?>
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main class="pt-16 bg-orange-50 dark:bg-gray-900">
         <?= $this->renderSection('content'); ?>
     </main>
 
@@ -31,6 +31,8 @@
         AOS.init({
             duration: 800,
             once: true,
+            offset: 50,
+            easing: 'ease-in-out',
         });
     </script>
 

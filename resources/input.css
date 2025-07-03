@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@keyframes slowZoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@layer utilities {
+  .animate-slowZoom {
+    animation: slowZoom 20s ease-in-out infinite;
+  }
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 /* Optional custom styles here */
 
