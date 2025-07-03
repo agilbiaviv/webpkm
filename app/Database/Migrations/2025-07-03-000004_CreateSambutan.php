@@ -13,7 +13,7 @@ class CreateSambutan extends Migration
             'nama_kepala' => ['type' => 'VARCHAR', 'constraint' => 255],
             'foto_kepala' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'isi_sambutan' => ['type' => 'TEXT'],
-            'updated_at' => ['type' => 'TIMESTAMP', 'default' => 'CURRENT_TIMESTAMP'],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('sambutan');

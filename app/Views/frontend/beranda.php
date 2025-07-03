@@ -17,7 +17,7 @@
         <h1 data-aos="fade-up" class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-md">Selamat Datang di Puskesmas Bungatan</h1>
         <p data-aos="fade-up" data-aos-delay="250" class="text-lg md:text-xl mb-8 opacity-90">Pelayanan kesehatan terbaik untuk masyarakat.</p>
         <button data-aos="zoom-in" data-aos-delay="500" id="scrollToJadwal"
-            class="bg-orange-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-orange-600 transition flex items-center gap-2 shadow-lg cursor-pointer group mx-auto transition-transform duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-400">
+            class="bg-orange-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-orange-600 flex items-center gap-2 shadow-lg cursor-pointer group mx-auto transition-transform duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-400">
             Lihat Jadwal Pelayanan
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform -rotate-90 animate-pulse" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">

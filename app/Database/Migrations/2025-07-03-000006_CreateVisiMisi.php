@@ -12,7 +12,7 @@ class CreateVisiMisi extends Migration
             'id' => ['type' => 'INT', 'auto_increment' => true],
             'visi' => ['type' => 'TEXT'],
             'misi' => ['type' => 'TEXT'],
-            'updated_at' => ['type' => 'DATETIME', 'default' => 'CURRENT_TIMESTAMP'],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('visi_misi');

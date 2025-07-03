@@ -15,8 +15,8 @@ class CreateStrukturOrganisasi extends Migration
             'foto' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'urutan' => ['type' => 'INT', 'default' => 0],
             'parent_id' => ['type' => 'INT', 'null' => true],
-            'created_at' => ['type' => 'DATETIME', 'default' => 'CURRENT_TIMESTAMP'],
-            'updated_at' => ['type' => 'DATETIME', 'default' => 'CURRENT_TIMESTAMP'],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('struktur_organisasi');
