@@ -17,12 +17,12 @@ class CreateBerita extends Migration
             'foto' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'caption_foto' => ['type' => 'TEXT', 'null' => true],
             'status' => ['type' => 'TINYINT', 'default' => 1],
-            'author_id' => ['type' => 'INT'],
-            'kategori_id' => ['type' => 'INT'],
+            'author_id' => ['type' => 'INT', 'unsigned' => true],
+            'kategori_id' => ['type' => 'INT', 'unsigned' => true],
             'tags' => ['type' => 'TEXT', 'null' => true],
             'view_count' => ['type' => 'INT', 'default' => 0],
-            'created_at' => ['type' => 'DATETIME', 'default' => 'CURRENT_TIMESTAMP'],
-            'updated_at' => ['type' => 'DATETIME', 'default' => 'CURRENT_TIMESTAMP'],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('kategori_id', 'kategori_berita', 'id', 'CASCADE', 'CASCADE');

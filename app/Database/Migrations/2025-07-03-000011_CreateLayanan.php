@@ -12,7 +12,7 @@ class CreateLayanan extends Migration
             'id' => ['type' => 'INT', 'auto_increment' => true],
             'nama' => ['type' => 'VARCHAR', 'constraint' => 100],
             'deskripsi' => ['type' => 'TEXT', 'null' => true],
-            'dibuat_pada' => ['type' => 'TIMESTAMP', 'default' => 'CURRENT_TIMESTAMP'],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('layanan');

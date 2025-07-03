@@ -10,9 +10,9 @@ class CreatePengaduan extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'auto_increment' => true],
-            'pengguna_id' => ['type' => 'INT', 'null' => true],
+            'pengguna_id' => ['type' => 'INT', 'unsigned' => true, 'null' => true],
             'keluhan' => ['type' => 'TEXT', 'null' => true],
-            'dibuat_pada' => ['type' => 'TIMESTAMP', 'default' => 'CURRENT_TIMESTAMP'],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('pengguna_id', 'pengguna', 'id', 'CASCADE', 'CASCADE');
