@@ -69,7 +69,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Judul Berita</label>
-                    <input type="text" class="form-control" value="<?= isset($berita) ? $berita['judul_berita'] : '' ?>" name="judul_berita" placeholder="Masukkan judul berita" required>
+                    <input type="text" class="form-control" autocomplete="off" value="<?= isset($berita) ? $berita['judul_berita'] : '' ?>" name="judul_berita" placeholder="Masukkan judul berita" required>
                   </div>
                 </div>
 
@@ -94,7 +94,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Deskripsi Foto</label>
-                    <input type="text" class="form-control" value="<?= isset($berita) ? $berita['caption_foto'] : ''  ?>" name="caption_foto" required>
+                    <input type="text" class="form-control" autocomplete="off" value="<?= isset($berita) ? $berita['caption_foto'] : ''  ?>" name="caption_foto" required>
                   </div>
                 </div>
 

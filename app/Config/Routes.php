@@ -12,14 +12,17 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin', 'filter' => 'au
     $routes->get('beranda', 'BerandaController::index');
 
     //============== Menu Berita =====================
-    $routes->get('berita', 'BeritaController::index');
-    $routes->get('berita/create', 'BeritaController::create');
-    $routes->get('berita/edit/(:num)', 'BeritaController::edit/$1');
-    $routes->post('berita/fetch', 'BeritaController::fetchData');
-    $routes->post('berita/updateStatus', 'BeritaController::updateStatus');
-    $routes->post('berita/update/(:num)', 'BeritaController::update/$1');
-    $routes->delete('berita/delete/(:num)', 'BeritaController::delete/$1');
+    $routes->get('berita', 'berita\BeritaController::index');
+    $routes->get('berita/create', 'berita\BeritaController::create');
+    $routes->get('berita/edit/(:num)', 'berita\BeritaController::edit/$1');
+    $routes->post('berita/fetch', 'berita\BeritaController::fetchData');
+    $routes->post('berita/save', 'berita\BeritaController::save');
+    $routes->post('berita/updateStatus', 'berita\BeritaController::updateStatus');
+    $routes->post('berita/update/(:num)', 'berita\BeritaController::update/$1');
+    $routes->delete('berita/delete/(:num)', 'berita\BeritaController::delete/$1');
 
+    $routes->get('kategori/fetch', 'berita\KategoriController::fetch');
+    $routes->post('kategori/add', 'berita\KategoriController::store');
     //============== Menu Profil =====================
     $routes->get('profil', 'profil/ProfilController::index');
     $routes->get('profil/sambutan', 'profil\ProfilController::sambutan');
@@ -49,15 +52,17 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin', 'filter' => 'au
 
 
 
-    $routes->post('berita/save', 'BeritaController::save');
 
-    $routes->post('kategori/add', 'KategoriController::store');
-    $routes->get('kategori/fetch', 'KategoriController::fetch');
 
     $routes->get('layanan-kesehatan', 'LayananController::index');
     $routes->get('layanan/rawat-jalan', 'LayananController::rawatJalan');
     $routes->get('pengaduan', 'PengaduanController::index');
     $routes->get('inovasi', 'InovasiController::index');
+
+    $routes->get('pengguna', 'PenggunaController::index');
+    $routes->get('footer-config', 'FooterConfigController::index');
+    $routes->post('footer-config/update', 'FooterConfigController::update');
+    $routes->get('kategori-berita', 'KategoriBeritaController::index');
     $routes->get('logout', 'AuthController::logout');
 });
 

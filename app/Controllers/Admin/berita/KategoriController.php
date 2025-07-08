@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Admin\berita;
 
 use App\Controllers\BaseController;
 use App\Models\Berita\KategoriModel;

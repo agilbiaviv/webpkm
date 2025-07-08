@@ -17,54 +17,70 @@ class ProfilController extends BaseController
         $this->strukturModel = new StrukturOrganisasiModel();
     }
 
-    public function index()
-    {
-        $currentUrl = '/profil';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-        // print_r(count($breadcrumbs));
-        return $this->loadAdminView('admin/profil', [
-            'breadcrumbs' => $breadcrumbs
-        ]);
-    }
+    // public function index()
+    // {
+    //     $currentUrl = '/profil';
+    //     $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
+    //     // print_r(count($breadcrumbs));
+    //     return $this->loadAdminView('admin/profil', [
+    //         'breadcrumbs' => $breadcrumbs
+    //     ]);
+    // }
 
     public function sambutan()
     {
-        $currentUrl = '/profil/sambutan';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
         $sambutanModel = new \App\Models\Profil\SambutanModel();
         $sambutan = $sambutanModel->first(); // because it's probably only one row
 
-        return $this->loadAdminView('admin/profil/sambutan', [
-            'breadcrumbs' => $breadcrumbs,
+        $data = [
+            'title' => 'Sambutan Kepala Puskesmas',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Profil', 'url' => '#'],
+                ['name' => 'Sambutan Kepala Puskesmas', 'active' => true]
+            ],
             'sambutan' => $sambutan
-        ]);
+        ];
+        return $this->loadAdminView('admin/profil/sambutan', $data);
     }
 
     public function visiMisi()
     {
-        $currentUrl = '/profil/visi-misi';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-        $visiMisiModel = new \App\Models\Profil\VisiMisiModel();
-        $data = $visiMisiModel->first();
 
-        return $this->loadAdminView('admin/profil/visi_misi', [
-            'breadcrumbs' => $breadcrumbs,
-            'data' => $data
-        ]);
+        $visiMisiModel = new \App\Models\Profil\VisiMisiModel();
+        $VisiMisi = $visiMisiModel->first();
+
+        $data = [
+            'title' => 'Visi dan Misi',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Profil', 'url' => '#'],
+                ['name' => 'Visi dan Misi', 'active' => true]
+            ],
+            'data' => $VisiMisi
+        ];
+
+        return $this->loadAdminView('admin/profil/visi_misi', $data);
     }
 
     public function strukturOrganisasi()
     {
-        $currentUrl = '/profil/struktur-organisasi';
-        $data = $this->strukturModel
+
+        $struktur = $this->strukturModel
             ->orderBy('parent_id', 'ASC')
             ->orderBy('urutan', 'ASC')
             ->findAll();
 
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-        return $this->loadAdminView('admin/profil/struktur_organisasi', [
-            'breadcrumbs' => $breadcrumbs,
-            'struktur' => $data
-        ]);
+        $data = [
+            'title' => 'Struktur Organisasi',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Profil', 'url' => '#'],
+                ['name' => 'Strukutur Organisasi', 'active' => true]
+            ],
+            'struktur' => $struktur
+        ];
+
+        return $this->loadAdminView('admin/profil/struktur_organisasi', $data);
     }
 }

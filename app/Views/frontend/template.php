@@ -24,17 +24,12 @@
     </main>
 
     <!-- Footer -->
-    <?= $this->include('frontend/components/footer'); ?>
+    <?= view('frontend/components/footer'); ?>
 
+    <script src="<?= base_url('js/app.js'); ?>"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50,
-            easing: 'ease-in-out',
-        });
-    </script>
+    <!-- Tambahkan ini di bagian BAWAH template.php -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -62,6 +57,34 @@
                 localStorage.setItem('dark-mode-isActive', isDark ? 'true' : 'false');
                 toggle.textContent = isDark ? sunIcon : moonIcon;
             });
+
+            lucide.createIcons();
+
+            const submenuToggles = document.querySelectorAll('[data-toggle="submenu"]');
+
+            submenuToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const targetId = toggle.getAttribute('data-target');
+                    const submenu = document.getElementById(targetId);
+                    const icon = toggle.querySelector('.submenu-icon');
+
+                    if (submenu) {
+                        const isOpen = submenu.classList.contains('max-h-40');
+
+                        submenu.classList.remove('max-h-0', 'max-h-40');
+                        submenu.classList.add('overflow-hidden');
+
+                        if (isOpen) {
+                            submenu.classList.add('max-h-0');
+                            icon?.classList.remove('rotate-180');
+                        } else {
+                            submenu.classList.add('max-h-40');
+                            icon?.classList.add('rotate-180');
+                        }
+                    }
+                });
+            });
+
         });
     </script>
 
@@ -102,36 +125,12 @@
         });
     </script>
 
+    <?= $this->renderSection('pageScript'); ?>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const submenuToggles = document.querySelectorAll('[data-toggle="submenu"]');
 
-            submenuToggles.forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                    const targetId = toggle.getAttribute('data-target');
-                    const submenu = document.getElementById(targetId);
-                    const icon = toggle.querySelector('.submenu-icon');
-
-                    if (submenu) {
-                        const isOpen = submenu.classList.contains('max-h-40');
-
-                        submenu.classList.remove('max-h-0', 'max-h-40');
-                        submenu.classList.add('overflow-hidden');
-
-                        if (isOpen) {
-                            submenu.classList.add('max-h-0');
-                            icon?.classList.remove('rotate-180');
-                        } else {
-                            submenu.classList.add('max-h-40');
-                            icon?.classList.add('rotate-180');
-                        }
-                    }
-                });
-            });
-        });
     </script>
 
-    <?= $this->renderSection('pageScript'); ?>
 </body>
 
 </html>

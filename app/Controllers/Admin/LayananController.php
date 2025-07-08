@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
@@ -14,11 +15,14 @@ class LayananController extends BaseController
 
     public function index()
     {
-        $currentUrl = '/layanan-kesehatan';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-        return $this->loadAdminView('admin/layanan/index', [
-            'breadcrumbs' => $breadcrumbs
-        ]);
+        $data = [
+            'title' => 'Layanan Kesehatan',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Layanan Kesehatan', 'active' => true]
+            ]
+        ];
+        return $this->loadAdminView('admin/layanan/index', $data);
     }
 
     public function rawatJalan()
@@ -29,5 +33,4 @@ class LayananController extends BaseController
             'breadcrumbs' => $breadcrumbs
         ]);
     }
-
 }
