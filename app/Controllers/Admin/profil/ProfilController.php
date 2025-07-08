@@ -3,28 +3,20 @@
 namespace App\Controllers\Admin\profil;
 
 use App\Controllers\BaseController;
-use App\Controllers\MenuController;
 use App\Models\Profil\StrukturOrganisasiModel;
 
 class ProfilController extends BaseController
 {
-    protected $menuController;
     protected $strukturModel;
 
     public function __construct()
     {
-        $this->menuController = new MenuController();
         $this->strukturModel = new StrukturOrganisasiModel();
     }
 
     // public function index()
     // {
-    //     $currentUrl = '/profil';
-    //     $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-    //     // print_r(count($breadcrumbs));
-    //     return $this->loadAdminView('admin/profil', [
-    //         'breadcrumbs' => $breadcrumbs
-    //     ]);
+    //     return redirect()->to(base_url('/admin/profil/sambutan'));
     // }
 
     public function sambutan()
@@ -41,7 +33,7 @@ class ProfilController extends BaseController
             ],
             'sambutan' => $sambutan
         ];
-        return $this->loadAdminView('admin/profil/sambutan', $data);
+        return view('admin/profil/sambutan', $data);
     }
 
     public function visiMisi()
@@ -60,7 +52,7 @@ class ProfilController extends BaseController
             'data' => $VisiMisi
         ];
 
-        return $this->loadAdminView('admin/profil/visi_misi', $data);
+        return view('admin/profil/visi_misi', $data);
     }
 
     public function strukturOrganisasi()
@@ -81,6 +73,6 @@ class ProfilController extends BaseController
             'struktur' => $struktur
         ];
 
-        return $this->loadAdminView('admin/profil/struktur_organisasi', $data);
+        return view('admin/profil/struktur_organisasi', $data);
     }
 }

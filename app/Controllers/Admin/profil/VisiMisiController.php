@@ -14,11 +14,11 @@ class VisiMisiController extends BaseController
         $this->visiMisiModel = new VisiMisiModel();
     }
 
-    public function index()
-    {
-        $data = $this->visiMisiModel->first(); // Assuming only one row
-        return $this->loadAdminView('admin/profil/visi-misi', ['data' => $data]);
-    }
+    // public function index()
+    // {
+    //     $data = $this->visiMisiModel->first(); // Assuming only one row
+    //     return $this->loadAdminView('admin/profil/visi-misi', ['data' => $data]);
+    // }
 
     public function save()
     {

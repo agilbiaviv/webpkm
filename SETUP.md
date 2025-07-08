@@ -41,6 +41,11 @@ composer install
 npm install
 ```
 
+Generate file app.js untuk frontend dengan :
+```bash
+npm run buildJS
+```
+
 Untuk development (tailwind live reload):
 
 ```bash
@@ -49,11 +54,6 @@ npm run tailwind
 
 📌📌 Pastikan script diatas selalu dijalankan saat development!
 
-
-Generate file app.js untuk frontend dengan :
-```bash
-npm run buildJS
-```
 
 
 ---
@@ -98,15 +98,21 @@ php spark migrate
 
 ---
 
-### 7. Jalankan Seeder (Opsional)
+### 7. Jalankan Seeder
 
 ```bash
 php spark db:seed UserSeeder
 ```
 
+📌 Script diatas akan membuat akun admin untuk halaman backend dengan :
+
+**Username : 'admin'**
+**Password : 'admin123'**
+
+
 ---
 
-### 8. Jalankan Server Lokal (Opsional)
+### 8. Jalankan Server Lokal
 
 ```bash
 php spark serve
@@ -120,6 +126,12 @@ Akses via browser:
 
 ```
 http://localhost:8080
+```
+
+untuk halaman backend :
+
+```
+http://localhost:8080/backend/login
 ```
 
 ---

@@ -3,15 +3,10 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Controllers\MenuController;
 
 class BerandaController extends BaseController
 {
-    protected $menuController;
-    public function __construct()
-    {
-        $this->menuController = new MenuController();
-    }
+    public function __construct() {}
 
     public function index()
     {
@@ -21,6 +16,6 @@ class BerandaController extends BaseController
                 ['name' => 'Beranda', 'active' => true]
             ]
         ];
-        return $this->loadAdminView('admin/beranda', $data);
+        return view('admin/beranda', $data);
     }
 }

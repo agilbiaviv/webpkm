@@ -106,9 +106,15 @@
                                             placeholder="https://www.google.com/maps/embed?..."><?= esc($footer['maps_embed_url'] ?? '') ?></textarea>
 
                                         <?php if (!empty($footer['maps_embed_url'])): ?>
-                                            <div class="mt-2 rounded overflow-hidden shadow">
+                                            <div class="mt-2 rounded overflow-hidden shadow" style="position: relative;">
+                                                <div id="map-loader" style="position:absolute; top:50%; left:50%; transform: translate(-50%,-50%); z-index:10;">
+                                                    <div class="spinner-border text-primary" role=" status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                </div>
                                                 <iframe src="<?= esc($footer['maps_embed_url']) ?>"
-                                                    width="100%" height="180" style="border:0;" loading="lazy" allowfullscreen></iframe>
+                                                    width="100%" height="180" style="border:0; opacity:0; transition: opacity .5 ease-in-out" loading="lazy" allowfullscreen
+                                                    onload="loader = document.getElementById('map-loader').remove(); this.style.opacity=1;"></iframe>
                                             </div>
                                         <?php endif; ?>
                                     </div>

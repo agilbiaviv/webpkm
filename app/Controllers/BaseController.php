@@ -68,12 +68,4 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = service('session');
     }
-
-    protected function loadAdminView($view, $data = [])
-    {
-        $menuController = new MenuController();
-        $data['menus'] = $menuController->getMenu();
-
-        echo view($view, $data);
-    }
 }

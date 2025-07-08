@@ -78,9 +78,6 @@
                                             name="foto"
                                             class="filepond"
                                             data-max-file-size="2MB">
-                                        <?php if (!empty($struktur['foto'])): ?>
-                                            <img src="<?= base_url('uploads/struktur/' . $struktur['foto']) ?>" width="100" class="mt-2">
-                                        <?php endif; ?>
                                     </div>
                                 </div>
 

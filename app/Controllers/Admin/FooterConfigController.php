@@ -25,7 +25,7 @@ class FooterConfigController extends BaseController
             ]
         ];
 
-        return $this->loadAdminView('admin/footer_config', $data);
+        return view('admin/footer_config', $data);
     }
 
     public function update()

@@ -3,15 +3,11 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Controllers\MenuController;
 
 class InovasiController extends BaseController
 {
     protected $menuController;
-    public function __construct()
-    {
-        $this->menuController = new MenuController();
-    }
+    public function __construct() {}
 
     public function index()
     {
@@ -22,6 +18,6 @@ class InovasiController extends BaseController
                 ['name' => 'Inovasi', 'active' => true]
             ]
         ];
-        return $this->loadAdminView('admin/inovasi', $data);
+        return view('admin/inovasi', $data);
     }
 }

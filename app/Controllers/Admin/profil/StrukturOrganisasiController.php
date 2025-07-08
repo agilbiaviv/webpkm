@@ -3,40 +3,44 @@
 namespace App\Controllers\Admin\profil;
 
 use App\Controllers\BaseController;
-use App\Controllers\MenuController;
 use App\Models\Profil\StrukturOrganisasiModel;
 
 class StrukturOrganisasiController extends BaseController
 {
-    protected $menuController;
     protected $strukturModel;
 
     public function __construct()
     {
-        $this->menuController = new MenuController();
         $this->strukturModel = new StrukturOrganisasiModel();
     }
 
-    public function index()
-    {
-        $currentUrl = '/profil/struktur-organisasi';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-
-        return $this->loadAdminView('admin/profil/struktur-organisasi', [
-            'breadcrumbs' => $breadcrumbs,
-            'struktur' => $this->strukturModel->findAll()
-        ]);
-    }
+    // public function index()
+    // {
+    //     $data = [
+    //         'title' => 'Struktur Organisasi',
+    //         'breadcrumbs' => [
+    //             ['name' => 'Beranda', 'url' => 'admin/beranda'],
+    //             ['name' => 'Profil', 'url' => '#'],
+    //             ['name' => 'Strukutur Organisasi', 'active' => true]
+    //         ],
+    //         'struktur' => $this->strukturModel->findAll()
+    //     ];
+    //     return view('admin/profil/struktur-organisasi', $data);
+    // }
 
     public function create()
     {
-        $currentUrl = '/profil/struktur-organisasi';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-
-        return $this->loadAdminView('admin/profil/struktur_organisasi_form', [
-            'breadcrumbs' => $breadcrumbs,
+        $data = [
+            'title' => 'Struktur Organisasi',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Profil', 'url' => '#'],
+                ['name' => 'Strukutur Organisasi', 'active' => true]
+            ],
             'strukturList' => $this->strukturModel->findAll()
-        ]);
+        ];
+
+        return view('admin/profil/struktur_organisasi_form', $data);
     }
 
     public function store()
@@ -78,17 +82,18 @@ class StrukturOrganisasiController extends BaseController
             return redirect()->to('/admin/profil/struktur-organisasi')->with('error', 'Data tidak ditemukan.');
         }
 
-        $currentUrl = '/struktur-organisasi';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-
-        // print_r($this->strukturModel->where('id !=', $id)->findAll());
-        // return;
-
-        return $this->loadAdminView('admin/profil/struktur_organisasi_form', [
-            'breadcrumbs' => $breadcrumbs,
+        $data = [
+            'title' => 'Struktur Organisasi',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Profil', 'url' => '#'],
+                ['name' => 'Strukutur Organisasi', 'active' => true]
+            ],
             'struktur' => $struktur,
             'strukturList' => $this->strukturModel->where('id !=', $id)->findAll()
-        ]);
+        ];
+
+        return view('admin/profil/struktur_organisasi_form', $data);
     }
 
     public function update($id)

@@ -3,18 +3,15 @@
 namespace App\Controllers\Admin\berita;
 
 use App\Controllers\BaseController;
-use App\Controllers\MenuController;
 use App\Models\Berita\BeritaModel;
 use App\Models\Berita\KategoriModel;
 
 class BeritaController  extends BaseController
 {
-    protected $menuController;
     protected $beritaModel;
 
     public function __construct()
     {
-        $this->menuController = new MenuController();
         $this->beritaModel = new BeritaModel();
     }
 
@@ -27,7 +24,7 @@ class BeritaController  extends BaseController
                 ['name' => 'Berita', 'active' => true]
             ]
         ];
-        return $this->loadAdminView('admin/berita/berita', $data);
+        return view('admin/berita/berita', $data);
     }
 
     public function fetchData()
@@ -86,15 +83,15 @@ class BeritaController  extends BaseController
     public function create()
     {
         $kategoriModel = new KategoriModel();
-        $data['kategori'] = $kategoriModel->findAll(); // Ambil semua kategori
-
-        $currentUrl = '/berita';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-
-        return $this->loadAdminView('admin/berita/berita_form', [
-            'breadcrumbs' => $breadcrumbs,
-            'kategori' => $data['kategori']
-        ]);
+        $data = [
+            'title' => 'Berita',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Berita', 'active' => true]
+            ],
+            'kategori' => $kategoriModel->findAll()
+        ];
+        return view('admin/berita/berita_form', $data);
     }
 
     public function save()
@@ -196,14 +193,16 @@ class BeritaController  extends BaseController
             return redirect()->to('/admin/berita')->with('error', 'Berita tidak ditemukan.');
         }
 
-        $currentUrl = '/berita';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-
-        return $this->loadAdminView('admin/berita/berita_form', [
-            'breadcrumbs' => $breadcrumbs,
+        $data = [
+            'title' => 'Berita',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Berita', 'active' => true]
+            ],
             'kategori' => $kategoriModel->findAll(),
             'berita' => $berita
-        ]);
+        ];
+        return view('admin/berita/berita_form', $data);
     }
 
     public function update($id)
