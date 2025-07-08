@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Admin\berita;
 
 use App\Controllers\BaseController;
 use App\Controllers\MenuController;
 use App\Models\Berita\BeritaModel;
 use App\Models\Berita\KategoriModel;
-
-use CodeIgniter\HTTP\ResponseInterface;
-use CodeIgniter\HTTP\Files\UploadedFile;
-use CodeIgniter\I18n\Time;
 
 class BeritaController  extends BaseController
 {
@@ -24,11 +20,14 @@ class BeritaController  extends BaseController
 
     public function index()
     {
-        $currentUrl = '/berita';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-        return $this->loadAdminView('admin/berita/berita', [
-            'breadcrumbs' => $breadcrumbs
-        ]);
+        $data = [
+            'title' => 'Berita',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Berita', 'active' => true]
+            ]
+        ];
+        return $this->loadAdminView('admin/berita/berita', $data);
     }
 
     public function fetchData()

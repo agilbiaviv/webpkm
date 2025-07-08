@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
@@ -14,11 +15,13 @@ class InovasiController extends BaseController
 
     public function index()
     {
-        $currentUrl = '/inovasi';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-        return $this->loadAdminView('admin/inovasi', [
-            'breadcrumbs' => $breadcrumbs
-        ]);
+        $data = [
+            'title' => 'Inovasi',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'url' => 'admin/beranda'],
+                ['name' => 'Inovasi', 'active' => true]
+            ]
+        ];
+        return $this->loadAdminView('admin/inovasi', $data);
     }
-
 }

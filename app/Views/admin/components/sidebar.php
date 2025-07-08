@@ -1,86 +1,110 @@
+<?php $current_url = current_url(); ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?= base_url(); ?>" class="brand-link">
         <img src="<?= base_url(); ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">dmin Website</span>
+        <span class="brand-text font-weight-light">Admin Website</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/beranda') ?>" class="nav-link <?= current_url() === base_url('admin/beranda') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/berita') ?>" class="nav-link <?= current_url() === base_url('admin/berita') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>Berita</p>
+                    </a>
+                </li>
+
                 <?php
-                $current_url = current_url(); // Get current URL
+                $profil_links = [
+                    base_url('admin/profil/sambutan'),
+                    base_url('admin/profil/struktur-organisasi'),
+                    base_url('admin/profil/visi-misi')
+                ];
+                $is_profil_active = in_array(current_url(), $profil_links);
                 ?>
-
-                <?php foreach ($menus as $menu) : ?>
-                    <?php
-                    $isActive = (base_url('admin' . $menu['url']) == $current_url) ? 'active' : '';
-
-                    // Check if any submenu is active
-                    $isSubmenuActive = false;
-                    if (!empty($menu['submenu'])) {
-                        foreach ($menu['submenu'] as $submenu) {
-                            if (base_url('admin' . $submenu['url']) == $current_url) {
-                                $isSubmenuActive = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    // Add "menu-open" if a submenu is active
-                    $menuOpen = $isSubmenuActive ? 'menu-open' : '';
-                    ?>
-
-                    <?php if (!empty($menu['submenu'])) { ?>
-                        <li class="nav-item <?= $menuOpen ?>">
-                            <a href="#" class="nav-link <?= $isSubmenuActive ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-folder"></i>
-                                <p>
-                                    <?= $menu['title']; ?>
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <?php foreach ($menu['submenu'] as $submenu) : ?>
-                                    <?php
-                                    $isSubActive = (base_url('admin' . $submenu['url']) == $current_url) ? 'active' : '';
-                                    ?>
-                                    <li class="nav-item">
-                                        <a href="<?= base_url('admin' . $submenu['url']); ?>" class="nav-link <?= $isSubActive ?>">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p><?= $submenu['title']; ?></p>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </li>
-                    <?php } else { ?>
+                <li class="nav-item has-treeview <?= $is_profil_active ? 'menu-open' : '' ?>">
+                    <a href="#" class="nav-link <?= $is_profil_active ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Profil
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('admin' . $menu['url']); ?>" class="nav-link <?= $isActive ?>">
-                                <i class="nav-icon <?= $menu['icon'] ?>"></i>
-                                <p>
-                                    <?= $menu['title'] ?>
-                                </p>
+                            <a href="<?= base_url('admin/profil/sambutan') ?>" class="nav-link <?= current_url() === base_url('admin/profil/sambutan') ? 'active' : '' ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Sambutan Kepala Puskesmas</p>
                             </a>
                         </li>
-                    <?php } ?>
-                <?php endforeach; ?>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/profil/struktur-organisasi') ?>" class="nav-link <?= current_url() === base_url('admin/profil/struktur-organisasi') ? 'active' : '' ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Struktur Organisasi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/profil/visi-misi') ?>" class="nav-link <?= current_url() === base_url('admin/profil/visi-misi') ? 'active' : '' ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Visi dan Misi</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/inovasi') ?>" class="nav-link <?= current_url() === base_url('admin/inovasi') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-lightbulb"></i>
+                        <p>Inovasi</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/pengaduan') ?>" class="nav-link <?= current_url() === base_url('admin/pengaduan') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-comments"></i>
+                        <p>Pengaduan</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/layanan-kesehatan') ?>" class="nav-link <?= current_url() === base_url('admin/layanan-kesehatan') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-stethoscope"></i>
+                        <p>Layanan Kesehatan</p>
+                    </a>
+                </li>
+
+                <li class="nav-header">MASTER</li>
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/pengguna') ?>" class="nav-link <?= current_url() === base_url('admin/pengguna') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-users-cog"></i>
+                        <p>Pengguna</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/footer-config') ?>" class="nav-link <?= current_url() === base_url('admin/footer-config') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>Konfigurasi Footer</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/kategori-berita') ?>" class="nav-link <?= current_url() === base_url('admin/kategori-berita') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>Kategori Berita</p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>

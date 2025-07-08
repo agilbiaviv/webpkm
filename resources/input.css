@@ -9,6 +9,14 @@
   .animate-slowZoom {
     animation: slowZoom 20s ease-in-out infinite;
   }
+
+  .spinner {
+    border-color: transparent;
+    border-top-color: #f97316; /* Tailwind orange-500 */
+    border-bottom-color: #f97316;
+    border-width: 4px;
+    border-style: solid;
+  }
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -18,3 +26,4 @@
 html {
   scroll-behavior: smooth;
 }
+

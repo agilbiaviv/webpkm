@@ -17,6 +17,7 @@ class FooterConfig extends Migration
             'email'           => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'facebook'        => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'instagram'       => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
+            'tiktok'          => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'youtube'         => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'maps_embed_url'  => ['type' => 'TEXT', 'null' => true],
             'created_at'      => ['type' => 'DATETIME', 'null' => true],

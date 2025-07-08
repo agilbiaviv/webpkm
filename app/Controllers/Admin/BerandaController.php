@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
@@ -14,11 +15,12 @@ class BerandaController extends BaseController
 
     public function index()
     {
-        $currentUrl = '/admin';
-        $breadcrumbs = $this->menuController->getBreadcrumb($currentUrl);
-        return $this->loadAdminView('admin/beranda', [
-            'breadcrumbs' => $breadcrumbs
-        ]);
+        $data = [
+            'title' => 'Beranda',
+            'breadcrumbs' => [
+                ['name' => 'Beranda', 'active' => true]
+            ]
+        ];
+        return $this->loadAdminView('admin/beranda', $data);
     }
-
 }

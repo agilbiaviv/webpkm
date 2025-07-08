@@ -37,6 +37,7 @@ abstract class BaseController extends Controller
      * @var list<string>
      */
     protected $helpers = [];
+    protected $footerData;
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -52,6 +53,11 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
+        // Ambil footer config
+        $footerModel = new \App\Models\FooterConfigModel();
+        $this->footerData = $footerModel->find(1);
+
+        service('renderer')->setVar('footer', $this->footerData);
 
         if (env('app.maintenanceMode') === 'true' || env('app.maintenanceMode') === true) {
             echo view('frontend/maintenance');
