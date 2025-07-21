@@ -14,7 +14,7 @@
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/20 z-10"></div>
 
     <div class="relative z-20 text-white max-w-3xl animate-fade-in">
-        <h1 data-aos="fade-up" class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-md">Selamat Datang di Puskesmas Bungatan</h1>
+        <h1 data-aos="fade-up" class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-md">Selamat Datang di <?= esc($footer['nama_instansi'] ?? 'Puskesmas') ?></h1>
         <p data-aos="fade-up" data-aos-delay="250" class="text-lg md:text-xl mb-8 opacity-90">Pelayanan kesehatan terbaik untuk masyarakat.</p>
         <button data-aos="zoom-in" data-aos-delay="500" id="scrollToJadwal"
             class="bg-orange-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-orange-600 flex items-center gap-2 shadow-lg cursor-pointer group mx-auto transition-transform duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-400">

@@ -16,7 +16,7 @@
 <body id="body" class="font-sans bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
 
     <!-- Navbar -->
-    <?= $this->include('frontend/components/navbar'); ?>
+    <?= view('frontend/components/navbar'); ?>
 
     <!-- Main Content -->
     <main class="pt-16 bg-orange-50 dark:bg-gray-900">

@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
     {
         $data = [
             'username' => 'admin',
-            'password' => password_hash('admin123', PASSWORD_DEFAULT),
+            'password' => password_hash('ujiCoba_web2025', PASSWORD_DEFAULT),
             'email' => 'admin@puskesmas.local',
             'created_at' => date('Y-m-d H:i:s')
         ];
