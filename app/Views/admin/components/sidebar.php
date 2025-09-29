@@ -63,12 +63,6 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="<?= base_url('admin/inovasi') ?>" class="nav-link <?= current_url() === base_url('admin/inovasi') ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-lightbulb"></i>
-                        <p>Inovasi</p>
-                    </a>
-                </li>
 
                 <li class="nav-item">
                     <a href="<?= base_url('admin/pengaduan') ?>" class="nav-link <?= current_url() === base_url('admin/pengaduan') ? 'active' : '' ?>">
@@ -77,18 +71,11 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="<?= base_url('admin/layanan-kesehatan') ?>" class="nav-link <?= current_url() === base_url('admin/layanan-kesehatan') ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-stethoscope"></i>
-                        <p>Layanan Kesehatan</p>
-                    </a>
-                </li>
-
                 <li class="nav-header">MASTER</li>
                 <li class="nav-item">
-                    <a href="<?= base_url('admin/pengguna') ?>" class="nav-link <?= current_url() === base_url('admin/pengguna') ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-users-cog"></i>
-                        <p>Pengguna</p>
+                    <a href="<?= base_url('admin/kategori-berita') ?>" class="nav-link <?= current_url() === base_url('admin/kategori-berita') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>Kategori Berita</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -98,12 +85,23 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('admin/kategori-berita') ?>" class="nav-link <?= current_url() === base_url('admin/kategori-berita') ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-tags"></i>
-                        <p>Kategori Berita</p>
+                    <a href="<?= base_url('admin/page-manager') ?>" class="nav-link <?= current_url() === base_url('admin/page-manager') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Manajemen Halaman</p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/menu-manager') ?>" class="nav-link <?= current_url() === base_url('admin/menu-manager') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-list-ul"></i>
+                        <p>Manajemen Menu</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('admin/pengguna') ?>" class="nav-link <?= current_url() === base_url('admin/pengguna') ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-users-cog"></i>
+                        <p>Pengguna</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

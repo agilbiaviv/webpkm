@@ -146,7 +146,6 @@
             toolbar: [
                 ['style', ['bold', 'italic', 'underline', 'clear']],
                 ['para', ['ul', 'ol', 'paragraph']],
-                ['view', ['codeview']]
             ]
         });
     });

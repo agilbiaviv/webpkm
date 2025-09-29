@@ -8,6 +8,9 @@
 
 <!-- SweetAlert2 CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="<?= base_url('assets/plugins/select2/css/select2.min.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css'); ?>">
 
 <!-- filepond CSS -->
 <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
@@ -31,47 +34,46 @@
                     <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
                 <?php endif; ?>
 
-                <form action="<?= base_url('admin/sambutan/save') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= isset($page) ? base_url('admin/page-manager/update/' . $page['id']) : base_url('admin/page-manager/save') ?>" method="POST" enctype="multipart/form-data">
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Form Berita</h3>
+                            <h3 class="card-title">Form Manajemen Halaman</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <?= csrf_field() ?>
-                                <input type="hidden" name="id" value="<?= $sambutan['id'] ?? '' ?>">
+                                <?php if (isset($page)) : ?>
+                                    <input type="hidden" name="id" value="<?= $page['id'] ?>">
+                                <?php endif; ?>
 
                                 <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label>Nama Kepala Puskesmas</label>
-                                                <input type="text" class="form-control" value="<?= isset($sambutan) ? $sambutan['nama_kepala'] : '' ?>" name="nama_kepala" placeholder="Eg: Theo Ganteng" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label>Foto Kepala Puskesmas</label>
-                                                <input type="file"
-                                                    class="filepond"
-                                                    name="foto_kepala"
-                                                    data-max-file-size="2MB"
-                                                    required>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <label>Judul Halaman <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" autocomplete="off" value="<?= isset($page) ? $page['title'] : '' ?>" name="title" placeholder="Masukkan judul halaman" required>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Sambutan Kepala Puskesmas</label>
-                                        <textarea class="form-control" id="summernote" name="isi_sambutan" row="5" required><?= isset($sambutan) ? $sambutan['isi_sambutan'] : '' ?></textarea>
+                                        <label>Gambar (Opsional)</label>
+                                        <input type="file"
+                                            class="filepond"
+                                            name="image"
+                                            data-max-file-size="2MB">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Konten <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="summernote" name="content" row="5" required><?= isset($page) ? $page['content'] : ''  ?></textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 d-flex justify-content-end align-items-center">
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <a class="btn btn-outline-secondary m-1" href="<?= base_url('admin/page-manager') ?>">Kembali</a>
+                                    <button type="submit" class="btn btn-<?= isset($page) ? 'warning' : 'primary'  ?>"><?= isset($page) ? 'Update' : 'Simpan'  ?></button>
                                 </div>
 
                             </div><!-- ROW -->
@@ -85,12 +87,14 @@
     </div>
 </section>
 
+
 <?= $this->endSection() ?>
 
 <?= $this->section('pageScript') ?>
 <!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<!-- Select2 -->
+<script src="<?= base_url('assets/plugins/select2/js/select2.full.min.js') ?>"></script>
 <!-- filepond JS -->
 
 <!-- include FilePond library -->
@@ -110,11 +114,15 @@
 <script>
     $(document).ready(function() {
 
+        let csrfName = '<?= csrf_token() ?>'
+        let csrfHash = '<?= csrf_hash() ?>'
+
         $('#summernote').summernote({
             height: 200,
             toolbar: [
                 // [groupName, [list of button]]
                 ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
             ]
         })
@@ -133,35 +141,17 @@
         });
 
         // Preload image if available
-        <?php if (!empty($sambutan['foto_kepala'])): ?>
-            pond.addFile("<?= base_url('uploads/sambutan/' . $sambutan['foto_kepala']) ?>");
+        <?php if (!empty($page['image'])): ?>
+            pond.addFile("<?= base_url('uploads/pages/' . $page['image']) ?>");
         <?php endif; ?>
+
+        $('.select2').select2({
+            theme: "bootstrap4",
+            placeholder: "Pilih Kategori",
+            allowClear: true
+        });
 
     })
 </script>
-
-<?php if (session()->getFlashdata('success')): ?>
-    <script>
-        Swal.fire({
-            title: 'Berhasil!',
-            text: '<?= session()->getFlashdata('success') ?>',
-            icon: 'success',
-            confirmButtonText: 'OK'
-        });
-    </script>
-<?php endif; ?>
-
-<?php if (session()->getFlashdata('error')): ?>
-    <script>
-        Swal.fire({
-            title: 'Oops!',
-            text: '<?= session()->getFlashdata('error') ?>',
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
-    </script>
-<?php endif; ?>
-
-
 
 <?= $this->endSection() ?>

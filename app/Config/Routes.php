@@ -50,6 +50,25 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin', 'filter' => 'au
     //===============================
 
 
+    // ==== Pages ====
+    $routes->get('page-manager', 'PageController::index');
+    $routes->get('page-manager/create', 'PageController::create');
+    $routes->post('page-manager/save', 'PageController::store');
+    $routes->post('page-manager/fetch', 'PageController::fetchData');
+    $routes->get('page-manager/edit/(:num)', 'PageController::edit/$1');
+    $routes->post('page-manager/update/(:num)', 'PageController::update/$1');
+    $routes->delete('page-manager/delete/(:num)', 'PageController::delete/$1');
+    //==============================
+
+    // ==== Menu ====
+    $routes->get('menu-manager', 'MenuController::index');
+    $routes->get('menu-manager/create', 'MenuController::create');
+    $routes->post('menu-manager/save', 'MenuController::store');
+    $routes->post('menu-manager/fetch', 'MenuController::fetchData');
+    $routes->get('menu-manager/edit/(:num)', 'MenuController::edit/$1');
+    $routes->post('menu-manager/update/(:num)', 'MenuController::update/$1');
+    $routes->delete('menu-manager/delete/(:num)', 'MenuController::delete/$1');
+    //==============================
 
 
 
@@ -85,6 +104,10 @@ $routes->group('/', ['namespace' => 'App\Controllers\Frontend'], function ($rout
     $routes->get('berita/(:segment)', 'Berita::detail/$1');
 
     // ===========================
+
+    $routes->get('(:segment)/(:segment)', 'PageController::view/$1/$2');
+    $routes->get('(:segment)', 'PageController::view/$1');
+
 
     // ========= Profil ==========
     $routes->get('profil/sambutan', 'Profil\SambutanController::index');

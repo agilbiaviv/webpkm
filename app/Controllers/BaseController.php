@@ -9,6 +9,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\Controllers\MenuController;
+use App\Models\MenuModel;
 
 /**
  * Class BaseController
@@ -48,6 +49,8 @@ abstract class BaseController extends Controller
     /**
      * @return void
      */
+
+    protected $menus;
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
@@ -59,13 +62,47 @@ abstract class BaseController extends Controller
 
         service('renderer')->setVar('footer', $this->footerData);
 
+
+        // Ambil semua menu aktif urut posisi
+        $menuModel = new MenuModel();
+        $menus = $menuModel->db->table('menus')
+            ->select('menus.*, parent.name as parent_name')
+            ->join('menus as parent', 'parent.id = menus.parent_id', 'left')
+            ->where('menus.status', 'active')
+            ->orderBy('menus.position', 'ASC')
+            ->get()
+            ->getResultArray();
+
+        // Bikin tree dari flat array
+        $this->menus = $this->buildTree($menus);
+
+        // Share $menus ke view
+        service('renderer')->setVar('menus', $this->menus);
+
         if (env('app.maintenanceMode') === 'true' || env('app.maintenanceMode') === true) {
             echo view('frontend/maintenance');
             exit;
         }
 
+
+
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = service('session');
+    }
+
+    private function buildTree(array $elements, $parentId = null): array
+    {
+        $branch = [];
+        foreach ($elements as $element) {
+            if ($element['parent_id'] == $parentId) {
+                $children = $this->buildTree($elements, $element['id']);
+                if ($children) {
+                    $element['children'] = $children;
+                }
+                $branch[] = $element;
+            }
+        }
+        return $branch;
     }
 }

@@ -7,7 +7,7 @@
 
 <?= $this->section('content'); ?>
 <section class="py-10">
-    <div class="max-w-4xl mx-auto px-4">
+    <div class="max-w-5xl mx-auto px-4">
         <!-- Card Dua Kolom -->
         <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-stretch " data-aos="fade-up">
 
