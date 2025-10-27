@@ -6,7 +6,10 @@
 
 <?= $this->section('content') ?>
 
-<div class="max-w-4xl mx-auto px-6 py-10">
+<div class=" pt-10">
+    <?= view('frontend/components/breadcrumb', ['breadcrumbs' => $breadcrumbs ?? []]); ?>
+</div>
+<div class="max-w-5xl mx-auto px-6 pb-10">
     <h1 class="text-3xl font-bold mb-6">Berita</h1>
 
     <!-- Filter Form -->
@@ -67,7 +70,6 @@
                 class="w-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-md text-sm transition">Reset</button>
         </div>
     </form>
-
 
     <!-- Grouped List -->
     <div id="berita-list">

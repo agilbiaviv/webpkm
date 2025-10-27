@@ -26,7 +26,7 @@
     <?php endif; ?>
 
 
-    <div class="prose max-w-none">
+    <div class="deskripsi-berita max-w-none">
         <?= $berita['deskripsi'] ?>
     </div>
 

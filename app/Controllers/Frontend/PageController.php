@@ -3,15 +3,18 @@
 namespace App\Controllers\Frontend;
 
 use App\Controllers\BaseController;
+use App\Models\MenuModel;
 use App\Models\PageModel;
 
 class PageController extends BaseController
 {
     protected $pageModel;
+    protected $menuModel;
 
     public function __construct()
     {
         $this->pageModel = new PageModel();
+        $this->menuModel = new MenuModel();
     }
 
     public function view($parent = null, $slug = null)
@@ -30,8 +33,19 @@ class PageController extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound($slug);
         }
 
+        $menu = $this->menuModel
+            ->where('slug', $slug)
+            ->first();
+
+        if (!$menu) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound($slug);
+        }
+
+        $data['breadcrumbs'] = getBreadcrumbs($menu['id'], $this->menuModel);
+
         return view('frontend/page', [
-            'page' => $page,
+            'page'        => $page,
+            'breadcrumbs' => $data['breadcrumbs'],
         ]);
     }
 }

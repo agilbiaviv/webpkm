@@ -1,4 +1,4 @@
-<footer class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 py-12 border-t border-gray-300 dark:border-gray-700 mt-10">
+<footer class="text-gray-700 dark:text-gray-300 py-12 shadow dark:shadow-[0_2px_4px_rgba(255,255,255,0.06)] transition-transform duration-300 bg-white/90 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 ease-in-out will-change-transform">
     <div class="max-w-screen-xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-sm">
 
         <!-- Alamat dan Kontak -->

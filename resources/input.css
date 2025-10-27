@@ -27,3 +27,16 @@ html {
   scroll-behavior: smooth;
 }
 
+
+.deskripsi-berita ul, ol {
+  margin-left: 2rem; /* kasih indent */
+  list-style-position: outside; /* default */
+}
+
+.deskripsi-berita ul {
+  list-style-type: disc;
+}
+
+.deskripsi-berita ol {
+  list-style-type: decimal;
+}

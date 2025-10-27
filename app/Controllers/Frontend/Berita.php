@@ -4,12 +4,14 @@ namespace App\Controllers\Frontend;
 
 use App\Controllers\BaseController;
 use App\Models\Berita\BeritaModel;
+use App\Models\MenuModel;
 
 class Berita extends BaseController
 {
 
     public function index()
     {
+        $menuModel = new MenuModel();
         $beritaModel = new BeritaModel();
 
         $keyword = $this->request->getGet('q');
@@ -41,12 +43,17 @@ class Berita extends BaseController
             $grouped[$groupKey][] = $item;
         }
 
+
+        $menuId = $menuModel->where('slug', 'berita')->first()['id'];
+        $data['breadcrumbs'] = getBreadcrumbs($menuId, $menuModel);
+
         return view('frontend/berita/berita', [
             'beritaGrouped' => $grouped,
             'pager' => $pager,
             'keyword' => $keyword,
             'selectedMonth' => $month,
-            'selectedYear' => $year
+            'selectedYear' => $year,
+            'breadcrumbs' => $data['breadcrumbs']
         ]);
     }
 
